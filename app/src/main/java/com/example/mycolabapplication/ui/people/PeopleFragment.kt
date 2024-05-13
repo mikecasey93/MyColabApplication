@@ -5,22 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mycolabapplication.R
 import com.example.mycolabapplication.databinding.FragmentPeopleBinding
-import com.example.mycolabapplication.ui.details.DetailsFragment
 
 
 class PeopleFragment : Fragment() {
-    private var _binding: FragmentPeopleBinding? = null
-    private val binding get() = _binding!!
-
+    lateinit var binding: FragmentPeopleBinding
+    private val peopleViewModel: PeopleViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,9 +25,13 @@ class PeopleFragment : Fragment() {
     ): View {
         val peopleViewModel = ViewModelProvider(this).get(PeopleViewModel::class.java)
 
-        _binding = FragmentPeopleBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        binding = FragmentPeopleBinding.inflate(inflater, container, false)
+        return binding.root
 
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.apply {
             peopleViewModel.productList.observe(viewLifecycleOwner) {
                 rcPeople.apply {
@@ -51,11 +51,10 @@ class PeopleFragment : Fragment() {
                 }
             }
         }
-        return root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        binding = null
+//    }
 }

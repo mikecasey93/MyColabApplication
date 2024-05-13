@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/peopleFragment">
+    app:startDestination="@id/itemPeople">
 
     <fragment
         android:id="@+id/detailsFragment"
@@ -11,7 +11,7 @@
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" />
     <fragment
-        android:id="@+id/peopleFragment"
+        android:id="@+id/itemPeople"
         android:name="com.example.mycolabapplication.ui.people.PeopleFragment"
         android:label="fragment_people"
         tools:layout="@layout/fragment_people" >
