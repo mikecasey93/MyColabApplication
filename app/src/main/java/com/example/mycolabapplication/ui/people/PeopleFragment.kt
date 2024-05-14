@@ -8,12 +8,16 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mycolabapplication.R
 import com.example.mycolabapplication.databinding.FragmentPeopleBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class PeopleFragment : Fragment() {
     lateinit var binding: FragmentPeopleBinding
     private val peopleViewModel: PeopleViewModel by viewModels()
@@ -24,6 +28,12 @@ class PeopleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val peopleViewModel = ViewModelProvider(this).get(PeopleViewModel::class.java)
+
+        lifecycleScope.launch {
+            peopleViewModel.dataShareState.collect{
+
+            }
+        }
 
         binding = FragmentPeopleBinding.inflate(inflater, container, false)
         return binding.root

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.mycolabapplication.R
@@ -35,6 +36,9 @@ class DetailsFragment : Fragment() {
             tvEmail.text = email
             tvJobTitle.text = jobTitle
             Glide.with(requireContext()).load(image).into(ivdDetailProfile)
+            btBack.setOnClickListener {
+                Navigation.findNavController(it).navigate(R.id.action_detailsFragment_to_itemPeople)
+            }
         }
 
         return binding.root

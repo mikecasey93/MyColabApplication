@@ -9,7 +9,11 @@
         android:id="@+id/detailsFragment"
         android:name="com.example.mycolabapplication.ui.details.DetailsFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_details" >
+        <action
+            android:id="@+id/action_detailsFragment_to_itemPeople"
+            app:destination="@id/itemPeople" />
+    </fragment>
     <fragment
         android:id="@+id/itemPeople"
         android:name="com.example.mycolabapplication.ui.people.PeopleFragment"
@@ -20,7 +24,7 @@
             app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/roomsFragment"
+        android:id="@+id/itemRooms"
         android:name="com.example.mycolabapplication.ui.rooms.RoomsFragment"
         android:label="fragment_rooms"
         tools:layout="@layout/fragment_rooms" />

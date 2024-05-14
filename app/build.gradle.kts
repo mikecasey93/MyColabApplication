@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -66,5 +68,9 @@ dependencies {
     implementation(libs.converter.gson)
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
+
+    // Hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
 
 }

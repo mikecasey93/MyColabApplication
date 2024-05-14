@@ -11,8 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mycolabapplication.R
 import com.example.mycolabapplication.databinding.FragmentPeopleBinding
 import com.example.mycolabapplication.databinding.FragmentRoomsBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class RoomsFragment : Fragment() {
     private var _binding: FragmentRoomsBinding? = null
     private val binding get() = _binding!!
